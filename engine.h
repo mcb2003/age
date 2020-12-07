@@ -45,6 +45,9 @@ public:
 
   Engine(const Engine &) = delete;
   Engine &operator=(const Engine &) = delete;
+
+  // Get the path to the directory where preferences can be stored
+  std::string getPrefPath(const char *file = "");
 };
 } // namespace AGE
 

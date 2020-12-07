@@ -48,4 +48,10 @@ Engine::~Engine() {
   SDL_DestroyWindow(m_win);
   SDL_Quit();
 }
+
+std::string Engine::getPrefPath(const char *file) {
+  std::string path{SDL_GetPrefPath(m_org.c_str(), m_name.c_str())};
+  path += file;
+  return path;
+}
 } // namespace AGE

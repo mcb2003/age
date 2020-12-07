@@ -30,6 +30,7 @@
 int main(int, char **) {
   try {
     AGE::Engine engine{"Blind Computing", "Test Program"};
+    SDL_Log("Pref path: %s", engine.getPrefPath().c_str());
   } catch (const char *err) {
     // SDL initialisation error
     // The SDL_Log* functions don't require SDL to be initialised to work
