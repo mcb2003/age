@@ -23,15 +23,23 @@
 #ifndef AGE_ENGINE_H
 #define AGE_ENGINE_H
 
+#include <cstdint>
 #include <string>
 
 #include <SDL2/SDL.h>
 
 namespace AGE {
 class Engine {
+private:
+  SDL_Window *m_win;
+
 public:
-  Engine();
+  Engine(const char *title, int width = 640, int height = 480,
+         std::uint32_t flags = SDL_WINDOW_ALLOW_HIGHDPI);
   ~Engine();
+
+  Engine(const Engine &) = delete;
+  Engine &operator=(const Engine &) = delete;
 };
 } // namespace AGE
 

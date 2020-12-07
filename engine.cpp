@@ -23,11 +23,20 @@
 #include "engine.h"
 
 namespace AGE {
-Engine::Engine() {
-  if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+// Engine constructor
+Engine::Engine(const char *title, int width, int height, std::uint32_t flags)
+    : m_win{nullptr} {
+  // Initialise SDL subsystems
+  if (SDL_Init(SDL_INIT_VIDEO) != 0)
     throw SDL_GetError();
-  }
+
+  // Create a window
+  if (!(m_win = SDL_CreateWindow(title, 0, 0, width, height, flags)))
+    throw SDL_GetError();
 }
 
-Engine::~Engine() { SDL_Quit(); }
+Engine::~Engine() {
+  SDL_DestroyWindow(m_win);
+  SDL_Quit();
+}
 } // namespace AGE
