@@ -29,7 +29,7 @@
 
 int main(int, char **) {
   try {
-    AGE::Engine engine{"Test Program"};
+    AGE::Engine engine{"Blind Computing", "Test Program"};
   } catch (const char *err) {
     // SDL initialisation error
     // The SDL_Log* functions don't require SDL to be initialised to work

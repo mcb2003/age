@@ -35,10 +35,11 @@ private:
   SDL_Renderer *m_ren;
 
 protected:
-  std::string m_title;
+  const std::string m_org;
+  const std::string m_name;
 
 public:
-  Engine(const char *title, int width = 640, int height = 480,
+  Engine(const char *org, const char *name, int width = 640, int height = 480,
          std::uint32_t flags = SDL_WINDOW_ALLOW_HIGHDPI);
   ~Engine();
 

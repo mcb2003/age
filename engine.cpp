@@ -24,14 +24,15 @@
 
 namespace AGE {
 // Engine constructor
-Engine::Engine(const char *title, int width, int height, std::uint32_t flags)
-    : m_win{nullptr}, m_ren{nullptr}, m_title{title} {
+Engine::Engine(const char *org, const char *name, int width, int height,
+               std::uint32_t flags)
+    : m_win{nullptr}, m_ren{nullptr}, m_org{org}, m_name{name} {
   // Initialise SDL subsystems
   if (SDL_Init(SDL_INIT_VIDEO) != 0)
     throw SDL_GetError();
 
   // Create a window
-  m_win = SDL_CreateWindow(title, 0, 0, width, height, flags);
+  m_win = SDL_CreateWindow(name, 0, 0, width, height, flags);
   if (!m_win)
     throw SDL_GetError();
 
