@@ -43,6 +43,7 @@ Engine::Engine(const char *title, int width, int height, std::uint32_t flags)
 }
 
 Engine::~Engine() {
+  SDL_DestroyRenderer(m_ren);
   SDL_DestroyWindow(m_win);
   SDL_Quit();
 }
