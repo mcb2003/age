@@ -20,8 +20,10 @@
 
 /* SPDXLicenseIdentifier: LGPL-3-or-later */
 
-#include <SDL2/SDL.h>
+#include <cstdlib>
 #include <iostream>
+
+#include <SDL2/SDL.h>
 
 #include "engine.h"
 
@@ -29,9 +31,11 @@ int main(int, char **) {
   try {
     AGE::Engine engine{};
   } catch (const char *err) {
+    // SDL initialisation error
+    // The SDL_Log* functions don't require SDL to be initialised to work
     SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Failed to initialise engine: %s",
                  err);
-    return 1;
+    return EXIT_FAILURE;
   }
-  return 0;
+  return EXIT_SUCCESS;
 }
