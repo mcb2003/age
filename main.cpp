@@ -20,7 +20,6 @@
 
 /* SPDXLicenseIdentifier: LGPL-3-or-later */
 
-#include <cstdlib>
 #include <iostream>
 
 #include <SDL2/SDL.h>
@@ -31,12 +30,12 @@ int main(int, char **) {
   try {
     AGE::Engine engine{"Blind Computing", "Test Program"};
     SDL_Log("Pref path: %s", engine.getPrefPath().c_str());
+    return engine.start();
   } catch (const char *err) {
     // SDL initialisation error
     // The SDL_Log* functions don't require SDL to be initialised to work
     SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Failed to initialise engine: %s",
                  err);
-    return EXIT_FAILURE;
+    return 1;
   }
-  return EXIT_SUCCESS;
 }

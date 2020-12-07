@@ -35,16 +35,19 @@ private:
   SDL_Renderer *m_ren;
 
 protected:
+  int m_width;
+  int m_height;
   const std::string m_org;
   const std::string m_name;
 
 public:
-  Engine(const char *org, const char *name, int width = 640, int height = 480,
-         std::uint32_t flags = SDL_WINDOW_ALLOW_HIGHDPI);
+  Engine(const char *org, const char *name, int width = 640, int height = 480);
   ~Engine();
 
   Engine(const Engine &) = delete;
   Engine &operator=(const Engine &) = delete;
+
+  int start(std::uint32_t flags = SDL_WINDOW_ALLOW_HIGHDPI);
 
   // Get the path to the directory where preferences can be stored
   std::string getPrefPath(const char *file = "");
