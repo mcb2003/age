@@ -20,9 +20,18 @@
 
 /* SPDXLicenseIdentifier: LGPL-3-or-later */
 
+#include <SDL2/SDL.h>
 #include <iostream>
 
-int main() {
-  std::cout << "Hello, world!\n";
+#include "engine.h"
+
+int main(int, char **) {
+  try {
+    AGE::Engine engine{};
+  } catch (const char *err) {
+    SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Failed to initialise engine: %s",
+                 err);
+    return 1;
+  }
   return 0;
 }
