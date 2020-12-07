@@ -25,13 +25,20 @@
 namespace AGE {
 // Engine constructor
 Engine::Engine(const char *title, int width, int height, std::uint32_t flags)
-    : m_win{nullptr} {
+    : m_win{nullptr}, m_ren{nullptr}, m_title{title} {
   // Initialise SDL subsystems
   if (SDL_Init(SDL_INIT_VIDEO) != 0)
     throw SDL_GetError();
 
   // Create a window
-  if (!(m_win = SDL_CreateWindow(title, 0, 0, width, height, flags)))
+  m_win = SDL_CreateWindow(title, 0, 0, width, height, flags);
+  if (!m_win)
+    throw SDL_GetError();
+
+  // Create a renderer
+  // We use the default renderer (any that supports hardware acceleration)
+  m_ren = SDL_CreateRenderer(m_win, -1, SDL_RENDERER_ACCELERATED);
+  if (!m_ren)
     throw SDL_GetError();
 }
 

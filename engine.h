@@ -32,6 +32,10 @@ namespace AGE {
 class Engine {
 private:
   SDL_Window *m_win;
+  SDL_Renderer *m_ren;
+
+protected:
+  std::string m_title;
 
 public:
   Engine(const char *title, int width = 640, int height = 480,
