@@ -1,5 +1,6 @@
-CPPFLAGS = -Wall -Wextra -Weffc++ -Wsign-conversion -std=c++17 -MD
-CPPFLAGS += $(shell pkg-config --cflags --libs wayland-server wlroots)
+CPPFLAGS += -Wall -Wextra -Weffc++ -Wsign-conversion -std=c++17 -MD
+CPPFLAGS += $(shell pkg-config --cflags sdl2)
+LDFLAGS += $(shell pkg-config --libs sdl2)
 
 SOURCES = $(wildcard *.cpp)
 OBJECTS = ${SOURCES:.cpp=.o}
